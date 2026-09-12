@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --brand-gradient: linear-gradient(
+    135deg,
+    #f97316 0%,
+    #ec4899 50%,
+    #8b5cf6 100%
+  );
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+  color: #0f172a;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.brand-gradient {
+  background: var(--brand-gradient);
+}
+
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

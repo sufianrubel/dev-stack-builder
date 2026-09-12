@@ -194,6 +194,84 @@ Create 10-15 technology data with:
 
 ---
 
+## Local Project Setup
+
+### Prerequisites
+
+- Node.js 20.19+ or 22.12+
+- npm (included with Node.js)
+
+### Install and run
+
+```bash
+# Install the dependencies from package-lock.json
+npm install
+
+# Start the Vite development server
+npm run dev
+```
+
+Open the local URL printed in the terminal (normally `http://localhost:5173`).
+
+### Check the project
+
+Run both checks before committing or submitting changes:
+
+```bash
+# Check code quality with ESLint
+npm run lint
+
+# Type-check the project and create a production build
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## ESLint Guide
+
+ESLint checks the TypeScript and React source files using the rules in
+`eslint.config.js`. The generated `dist` directory is ignored.
+
+### Check all files
+
+```bash
+npm run lint
+```
+
+No terminal output after the script header means that no lint errors were found.
+If ESLint reports a problem, the message includes the file, line, rule name, and a
+short explanation.
+
+### Automatically fix supported issues
+
+```bash
+npm run lint:fix
+```
+
+Some problems require a manual change. After using auto-fix, run `npm run lint`
+again to confirm that the project is clean.
+
+### Check one file
+
+```bash
+npx eslint src/App.tsx
+```
+
+### Temporarily disable a rule
+
+Prefer fixing the warning. When an exception is genuinely needed, keep the
+disable comment limited to one line and explain why:
+
+```ts
+// eslint-disable-next-line rule-name -- reason for this exception
+```
+
+---
+
 ## ❓ Common FAQ
 
 **1. Where can we deploy the site?**  
