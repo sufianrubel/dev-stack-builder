@@ -7,7 +7,24 @@ interface TechnologyCardProps {
   onAdd: (technology: Technology) => void;
 }
 
+const badgeStyles: Record<string, string> = {
+  Popular: 'border-sky-200 bg-sky-50 text-sky-600',
+  Versatile: 'border-emerald-200 bg-emerald-50 text-emerald-600',
+  Fast: 'border-orange-200 bg-orange-50 text-orange-600',
+  'Full Stack': 'border-violet-200 bg-violet-50 text-violet-600',
+  Standard: 'border-emerald-200 bg-emerald-50 text-emerald-600',
+  'Top SQL': 'border-blue-200 bg-blue-50 text-blue-600',
+  Cache: 'border-rose-200 bg-rose-50 text-rose-600',
+  Ubiquitous: 'border-amber-200 bg-amber-50 text-amber-600',
+  Essential: 'border-sky-200 bg-sky-50 text-sky-600',
+  Robust: 'border-cyan-200 bg-cyan-50 text-cyan-600',
+  Modern: 'border-cyan-200 bg-cyan-50 text-cyan-600',
+  Containers: 'border-sky-200 bg-sky-50 text-sky-600',
+};
+
 export default function TechnologyCard({ technology, isAdded, onAdd }: TechnologyCardProps) {
+  const badgeStyle = badgeStyles[technology.badge] ?? 'border-pink-200 bg-pink-50 text-pink-600';
+
   return (
     <div className="bg-white rounded-2xl border border-slate-200/90 p-5 flex flex-col justify-between hover:border-slate-300 hover:shadow-lg hover:shadow-slate-200/50 transition-all duration-200 group relative">
       <div>
@@ -15,7 +32,7 @@ export default function TechnologyCard({ technology, isAdded, onAdd }: Technolog
           <div className="w-12 h-12 flex items-center justify-center group-hover:scale-105 transition-transform">
             <img src={technology.icon} alt={`${technology.name} icon`} className="w-7 h-7 object-contain" loading="lazy" />
           </div>
-          <span className="text-xs font-bold px-2.5 py-1 rounded-full border bg-pink-50 text-pink-600 border-pink-200">
+          <span className={`rounded-full border px-2.5 py-1 text-xs font-bold ${badgeStyle}`}>
             {technology.badge}
           </span>
         </div>
