@@ -38,7 +38,8 @@ export default function TechnologyCard({ technology, isAdded, onAdd }: Technolog
 
       <button
         onClick={() => onAdd(technology)}
-        className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center transition-all duration-200 active:scale-[0.98] ${isAdded ? 'bg-slate-100 text-slate-700 hover:bg-slate-200' : 'bg-slate-950 text-white hover:bg-slate-800 shadow-sm'
+        disabled={isAdded}
+        className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center transition-all duration-200 active:scale-[0.98] ${isAdded ? 'bg-slate-100 text-slate-700 cursor-not-allowed opacity-75' : 'bg-slate-950 text-white hover:bg-slate-800 shadow-sm'
           }`}
       >
         {isAdded ? (

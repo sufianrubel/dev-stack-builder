@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DocsModal from './components/DocsModal';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
@@ -27,8 +26,6 @@ export default function App() {
   const [selectedStack, setSelectedStack] = useState<Technology[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [showReadmeModal, setShowReadmeModal] = useState(false);
-  const [copyingConfig, setCopyingConfig] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -61,16 +58,6 @@ export default function App() {
     return () => controller.abort();
   }, []);
 
-  const categoryCoverage = useMemo(() => {
-    const categoriesPresent = new Set(selectedStack.map((technology) => technology.category));
-    return {
-      frontend: categoriesPresent.has('Frontend'),
-      backend: categoriesPresent.has('Backend'),
-      database: categoriesPresent.has('Database'),
-      language: categoriesPresent.has('Language'),
-    };
-  }, [selectedStack]);
-
   const handleAddToStack = (technology: Technology) => {
     if (selectedStack.some((item) => item.id === technology.id)) {
       toast.warning(`"${technology.name}" is already added to your stack!`);
@@ -92,48 +79,24 @@ export default function App() {
     toast.error('Cleared all items from your stack');
   };
 
-  const handleCopyStackJSON = async () => {
-    const jsonString = JSON.stringify(
-      selectedStack.map(({ id, name, category }) => ({ id, name, category })),
-      null,
-      2,
-    );
-
-    try {
-      await navigator.clipboard.writeText(jsonString);
-      setCopyingConfig(true);
-      toast.success('Stack JSON configuration copied to clipboard!');
-      window.setTimeout(() => setCopyingConfig(false), 2000);
-    } catch {
-      toast.error('Could not copy the stack configuration.');
-    }
-  };
-
-  const openDocs = () => setShowReadmeModal(true);
-
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans antialiased flex flex-col selection:bg-pink-100 selection:text-pink-600">
       <ToastContainer position="top-right" autoClose={3200} theme="dark" />
       <Navbar
-        onOpenDocs={openDocs}
         onDesktopSignUp={() => toast.info('Welcome to Dev Stack! Explore technology cards below.')}
         onMobileSignUp={() => toast.success('Signed Up successfully!')}
       />
-      <Hero onOpenDocs={openDocs} />
+      <Hero />
       <TechnologyGrid
         technologies={technologies}
         selectedStack={selectedStack}
         isLoading={isLoading}
         loadError={loadError}
-        categoryCoverage={categoryCoverage}
-        copyingConfig={copyingConfig}
         onAdd={handleAddToStack}
-        onCopy={handleCopyStackJSON}
         onRemove={handleRemoveFromStack}
         onRemoveAll={handleClearStack}
       />
-      <Footer onOpenDocs={openDocs} />
-      <DocsModal isOpen={showReadmeModal} onClose={() => setShowReadmeModal(false)} />
+      <Footer />
     </div>
   );
 }

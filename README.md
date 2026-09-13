@@ -47,7 +47,7 @@ Dev Stack Builder is a responsive React application that helps developers browse
 ### Installation
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/sufianrubel/dev-stack-builder.git
 cd dev-stack-builder
 npm install
 npm run dev

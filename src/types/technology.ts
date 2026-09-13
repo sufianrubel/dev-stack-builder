@@ -8,10 +8,3 @@ export interface Technology {
   difficulty: string;
   badge: string;
 }
-
-export interface CategoryCoverage {
-  frontend: boolean;
-  backend: boolean;
-  database: boolean;
-  language: boolean;
-}

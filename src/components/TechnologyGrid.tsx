@@ -1,5 +1,5 @@
 import { AlertCircle } from 'lucide-react';
-import type { CategoryCoverage, Technology } from '../types/technology';
+import type { Technology } from '../types/technology';
 import LoadingSpinner from './LoadingSpinner';
 import TechnologyCard from './TechnologyCard';
 import YourStack from './YourStack';
@@ -9,10 +9,7 @@ interface TechnologyGridProps {
   selectedStack: Technology[];
   isLoading: boolean;
   loadError: string | null;
-  categoryCoverage: CategoryCoverage;
-  copyingConfig: boolean;
   onAdd: (technology: Technology) => void;
-  onCopy: () => void | Promise<void>;
   onRemove: (id: string, name: string) => void;
   onRemoveAll: () => void;
 }
@@ -22,10 +19,7 @@ export default function TechnologyGrid({
   selectedStack,
   isLoading,
   loadError,
-  categoryCoverage,
-  copyingConfig,
   onAdd,
-  onCopy,
   onRemove,
   onRemoveAll,
 }: TechnologyGridProps) {
@@ -37,7 +31,7 @@ export default function TechnologyGrid({
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Explore the{' '}
-            <span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">Technologies</span>
+            <span className="brand-gradient-text">Technologies</span>
           </h2>
           <p className="mt-2 text-slate-600 text-base">Pick one technology per category to build your ideal stack.</p>
         </div>
@@ -71,9 +65,6 @@ export default function TechnologyGrid({
 
           <YourStack
             technologies={selectedStack}
-            categoryCoverage={categoryCoverage}
-            copyingConfig={copyingConfig}
-            onCopy={onCopy}
             onRemove={onRemove}
             onRemoveAll={onRemoveAll}
           />

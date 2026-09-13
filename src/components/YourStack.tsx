@@ -1,11 +1,8 @@
-import type { CategoryCoverage, Technology } from '../types/technology';
+import type { Technology } from '../types/technology';
 import StackItem from './StackItem';
 
 interface YourStackProps {
   technologies: Technology[];
-  categoryCoverage: CategoryCoverage;
-  copyingConfig: boolean;
-  onCopy: () => void | Promise<void>;
   onRemove: (id: string, name: string) => void;
   onRemoveAll: () => void;
 }

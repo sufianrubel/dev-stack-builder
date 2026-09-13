@@ -1,10 +1,6 @@
 import bannerStack from '../assets/banner-stack.png';
 
-interface HeroProps {
-  onOpenDocs: () => void;
-}
-
-export default function Hero({ onOpenDocs }: HeroProps) {
+export default function Hero() {
   return (
     <section id="home" className="relative pt-12 pb-20 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,7 +8,7 @@ export default function Hero({ onOpenDocs }: HeroProps) {
           <div className="lg:col-span-7 space-y-6 text-left">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
               Build Your Ideal{' '}
-              <span className="block mt-1 bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 bg-clip-text text-transparent">
+              <span className="brand-gradient-text block mt-1">
                 Development Stack
               </span>
             </h1>
@@ -20,12 +16,12 @@ export default function Hero({ onOpenDocs }: HeroProps) {
               Explore frontend, backend, database, and tooling options, compare them side by side, and put together the stack that fits your next project.
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a href="#explore" className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 text-white font-bold text-base px-7 py-3.5 rounded-full shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+              <a href="#explore" className="brand-gradient inline-flex items-center justify-center text-white font-bold text-base px-7 py-3.5 rounded-full shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
                 Explore Technologies
               </a>
-              <button onClick={onOpenDocs} className="inline-flex items-center justify-center bg-white text-slate-700 font-semibold text-base px-7 py-3.5 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-200">
+              <a href="#explore" className="inline-flex items-center justify-center bg-white text-slate-700 font-semibold text-base px-7 py-3.5 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-200">
                 Learn More
-              </button>
+              </a>
             </div>
           </div>
 

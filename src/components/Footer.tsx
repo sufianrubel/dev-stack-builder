@@ -1,8 +1,4 @@
-import logoText from '../assets/logo-text.png';
-
-interface FooterProps {
-  onOpenDocs: () => void;
-}
+import BrandLogo from './BrandLogo';
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/sufianrubel' },
@@ -10,14 +6,14 @@ const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sufianrubel' },
 ];
 
-export default function Footer({ onOpenDocs }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="bg-white border-t border-slate-100 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-slate-100">
           <div className="md:col-span-6 space-y-4">
             <a href="#home" className="inline-block" aria-label="Dev Stack home">
-              <img src={logoText} alt="Dev Stack" className="h-7 w-auto" />
+              <BrandLogo />
             </a>
             <p className="text-slate-500 text-xs leading-relaxed max-w-sm">
               Curated tools, technologies, and resources for developers building modern software.
@@ -49,7 +45,7 @@ export default function Footer({ onOpenDocs }: FooterProps) {
           <div className="md:col-span-2 space-y-3">
             <h5 className="text-xs font-bold uppercase tracking-wider text-slate-900">Company</h5>
             <ul className="space-y-2 text-xs text-slate-500">
-              <li><button onClick={onOpenDocs} className="hover:text-pink-600 text-left">About</button></li>
+              <li><a href="#about" className="hover:text-pink-600">About</a></li>
               <li><a href="#contact" className="hover:text-pink-600">Contact</a></li>
               <li><a href="#careers" className="hover:text-pink-600">Careers</a></li>
             </ul>

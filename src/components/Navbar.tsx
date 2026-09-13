@@ -1,14 +1,13 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import logoText from '../assets/logo-text.png';
+import BrandLogo from './BrandLogo';
 
 interface NavbarProps {
-  onOpenDocs: () => void;
   onDesktopSignUp: () => void;
   onMobileSignUp: () => void;
 }
 
-export default function Navbar({ onOpenDocs, onDesktopSignUp, onMobileSignUp }: NavbarProps) {
+export default function Navbar({ onDesktopSignUp, onMobileSignUp }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMobileSignUp = () => {
@@ -30,18 +29,14 @@ export default function Navbar({ onOpenDocs, onDesktopSignUp, onMobileSignUp }: 
           </button>
 
           <a href="#home" className="group" aria-label="Dev Stack home">
-            <img
-              src={logoText}
-              alt="Dev Stack"
-              className="h-7 sm:h-8 w-auto transition-transform duration-200 group-hover:scale-105"
-            />
+            <BrandLogo compact className="transition-transform duration-200 group-hover:scale-105" />
           </a>
 
           <div className="flex items-center justify-self-end gap-1 sm:gap-2 whitespace-nowrap">
-            <button onClick={onOpenDocs} className="text-slate-600 hover:text-slate-900 text-xs sm:text-sm font-semibold transition-colors">
+            <button type="button" className="text-slate-600 hover:text-slate-900 text-xs sm:text-sm font-semibold transition-colors">
               Sign In
             </button>
-            <button onClick={handleMobileSignUp} className="bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 text-white font-semibold text-xs sm:text-sm px-2 py-2 sm:px-3 rounded-full active:scale-95 transition-all duration-200">
+            <button onClick={handleMobileSignUp} className="brand-gradient text-white font-semibold text-xs sm:text-sm px-2 py-2 sm:px-3 rounded-full active:scale-95 transition-all duration-200">
               Sign Up
             </button>
           </div>
@@ -49,11 +44,7 @@ export default function Navbar({ onOpenDocs, onDesktopSignUp, onMobileSignUp }: 
 
         <div className="hidden md:flex items-center justify-between h-20">
           <a href="#home" className="group" aria-label="Dev Stack home">
-            <img
-              src={logoText}
-              alt="Dev Stack"
-              className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
-            />
+            <BrandLogo className="transition-transform duration-200 group-hover:scale-105" />
           </a>
 
           <nav className="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
@@ -65,10 +56,10 @@ export default function Navbar({ onOpenDocs, onDesktopSignUp, onMobileSignUp }: 
           </nav>
 
           <div className="flex items-center space-x-5">
-            <button onClick={onOpenDocs} className="text-slate-600 hover:text-slate-900 text-sm font-semibold transition-colors">
+            <button type="button" className="text-slate-600 hover:text-slate-900 text-sm font-semibold transition-colors">
               Sign In
             </button>
-            <button onClick={onDesktopSignUp} className="bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-pink-500/25 active:scale-95 transition-all duration-200">
+            <button onClick={onDesktopSignUp} className="brand-gradient text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-pink-500/25 active:scale-95 transition-all duration-200">
               Sign Up
             </button>
           </div>
