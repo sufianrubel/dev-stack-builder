@@ -1,293 +1,115 @@
-# 🧱 A-5 Dev Stack Builder Website
+<div align="center">
+  <img src="./src/assets/logo-text.png" alt="Dev Stack logo" height="52" />
 
-## 📅 Deadlines
-- 60 Marks: 13th September, 2026 (11:59 PM ⏱️)
-- 50 Marks: No deadline for 50 marks.
-- 30 Marks: Any time after the 60 marks window.
+  <h1>Dev Stack Builder</h1>
 
----
+  <p>
+    Explore modern development technologies and assemble the ideal stack for your next project.
+  </p>
 
-## 🚫 Key Rules
-- Don't ask about mark distribution in the group. We don't provide it.
-- Don't post assignment feedback after you receive it. If you face any problem or have any complaints, join a support session and discuss it.
-- Don't use any lorem ipsum text, rather use relevant and meaningful text content.
-- You can change the color if you want, but remember that it should not be a gobindo color.
-- Use at least 8 git commits with meaningful messages.
+  <p>
+    <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React 19" />
+    <img src="https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white" alt="TypeScript 6" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4" />
+    <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite 8" />
+  </p>
+</div>
 
+## About the project
 
+Dev Stack Builder is a responsive React application that helps developers browse popular frontend, backend, database, language, styling, DevOps, and tooling options. Each technology includes a short description, difficulty level, rating, and category. Users can add technologies to a personal stack, remove individual selections, or clear the entire stack.
 
----
+## Technologies used
 
-## 🧩 Features & Requirements (50 Marks)
-
-### 🧭 Navbar
-- Navbar designed according to the UI.
-- Left: brand logo + "Dev Stack" name.
-- Center: nav links — Home, Technologies, Projects, About, Contact.
-- Right: "Sign In" (text button) and "Sign Up" (filled pill button).
-- Navbar stays sticky at the top while scrolling.
-
----
-
-### 🍔 Mobile Navbar
-- On small devices the navbar has three parts:
-  - Left: hamburger menu icon
-  - Center: brand logo
-  - Right: Sign In and Sign Up buttons
-
-![Hamburger menu](./ui/hamburger.png)
-
----
-
-### 🎯 Banner / Hero
-- Banner section includes:
-  - Heading (two-tone: plain text + gradient text)
-  - Description text
-  - Two buttons — "Explore Technologies" (gradient) and "Learn More" (outlined)
-  - Banner image
-
----
-
-### 📦 JSON Data
-Create 10-15 technology data with:
-- id
-- name
-- category (Frontend / Backend / Database / Language / Styling / DevOps / Tools)
-- description
-- icon (image URL)
-- rating (example: 4.8)
-- difficulty (Beginner-Friendly / Intermediate / Advanced)
-- badge (example: Popular, Fast, Essential, Containers)
-
-**Example:**
-
-```json
-[
-  {
-    "id": "react",
-    "name": "React",
-    "category": "Frontend",
-    "description": "A declarative, component-based JavaScript library for building modern user interfaces.",
-    "icon": "https://icon.icepanel.io/Technology/svg/React.svg",
-    "rating": 4.9,
-    "difficulty": "Beginner-Friendly",
-    "badge": "Popular"
-  },
-  {
-    "id": "postgresql",
-    "name": "PostgreSQL",
-    "category": "Database",
-    "description": "A powerful, open-source object-relational database system with proven reliability.",
-    "icon": "https://icon.icepanel.io/Technology/svg/PostgresSQL.svg",
-    "rating": 4.9,
-    "difficulty": "Intermediate",
-    "badge": "Top SQL"
-  }
-]
-```
-
-🚩 You can take help of AI Systems for generating the JSON Data.
-
-🚩 Load the data from the JSON file — do not hardcode the array inside the component.
-
----
-
-### 🃏 Technology Cards
-- Display all technologies in a 3-column layout (responsive: 1 column on mobile, 2 on tablet).
-- Each card includes:
-  - Icon
-  - Badge
-  - Name
-  - Description
-  - Category chip
-  - Difficulty
-  - Rating with a star
-  - "Add to Stack" button
-
----
-
-### 🧰 Your Stack Section (Sidebar)
-- A "Your Stack" panel sits beside the technology grid.
-- Shows a heading and the selected count — example: "2 Technology Selected".
-- By default the panel shows an empty message.
-
-| Empty state | With selected items |
+| Technology | Purpose |
 | --- | --- |
-| ![Your Stack empty](./ui/YourStack-without.png) | ![Your Stack with items](./ui/YourStack-with.png) |
+| React 19 | Component-based user interface |
+| TypeScript | Type-safe application code |
+| Tailwind CSS 4 | Responsive styling and layout |
+| Vite 8 | Development server and production build |
+| React Toastify | User feedback notifications |
+| Lucide React | Interface icons |
+| JSON | Technology data source |
 
----
+## Key features
 
-### ➕ Add to Stack Functionality
-- Clicking "Add to Stack" adds that technology to the "Your Stack" panel.
-- Each stack item shows: icon, name, category, and a remove (✕) button.
-- Stack layout: 1 column.
-- **The same technology cannot be added twice.** Trying again shows a warning alert.
+1. **Technology explorer** — Browse responsive cards containing technology icons, descriptions, categories, difficulty levels, ratings, and badges.
+2. **Interactive stack builder** — Add technologies without duplicates, remove a single selection, or clear the complete stack.
+3. **Helpful interface states** — Includes loading, error, empty-stack, selected-stack, and toast notification states across desktop and mobile layouts.
 
-- Once added, that card's button becomes disabled and reads "✓ Added to Stack".
-
----
-
-### ❌ Remove Functionality
-- Clicking the ✕ button on a stack item removes only that item from the stack.
-- "Remove All" button clears the whole stack at once.
-
----
-
-### 🦶 Footer
-- Footer designed based on the UI.
-- Brand block: logo, name, short description, social links (GitHub, Twitter, LinkedIn).
-- Three link groups: Product, Company, Legal.
-- Bottom bar: copyright text + Privacy and Terms links.
-
----
-
-### 📱 Responsive Design
-- Fully responsive across mobile, tablet, and desktop.
-- Follow standard responsive practices.
-
----
-
-# 🚀 Challenges Part (10 Marks)
-
-### 🔔 Use a NPM Package React-Toastify
-- Use react-toastify to show alerts for: add to stack, duplicate add attempt, remove, and remove all.
-
----
-
-### ⏳ Loading State
-- Show a loading message/spinner while the JSON data is being fetched.
-- Note: since the JSON is a local file, the loading state may only be visible for a few milliseconds and can be hard to catch on screen. That is completely fine — the requirement is that the loading state exists and works, not that it stays visible for long.
-
----
-
-### 🎨 Gradient Brand Theme
-- Use one shared gradient (orange → pink → violet) for the brand name, hero heading highlight, and primary buttons.
-- Define the gradient in one place so the whole UI can be re-themed by changing a single value.
-
----
-
-### 📂 GitHub Repository
-- Create a beautiful GitHub Readme with the following description:
-  - Name of your project
-  - A little description
-  - Technology that you use
-  - 3 features about your project
-
-- Also answer these React questions at the end of your Readme (write the answers in your own words, short and simple):
-  1. What is JSX, and why is it used in React?
-  2. What is the difference between props and state?
-  3. What does the `useState` hook do, and where did you use it in this project?
-  4. What does the `useEffect` hook do, and why did you need it to load the JSON data?
-  5. Why does every item in a `.map()` list need a unique `key` prop?
-  6. What is conditional rendering? Show one place you used it (example: the empty stack message).
-  7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
-
----
-
-## ⚙️ Technology You Can Use
-- React.js
-- Tailwind CSS, DaisyUI
-- TypeScript / JavaScript (ES6+)
-- React-Toastify (NPM Package)
-- JSON (for technology data)
-- Vite (build tool)
-
----
-
-## Local Project Setup
+## Getting started
 
 ### Prerequisites
 
 - Node.js 20.19+ or 22.12+
-- npm (included with Node.js)
+- npm
 
-### Install and run
+### Installation
 
 ```bash
-# Install the dependencies from package-lock.json
+git clone <your-repository-url>
+cd dev-stack-builder
 npm install
-
-# Start the Vite development server
 npm run dev
 ```
 
-Open the local URL printed in the terminal (normally `http://localhost:5173`).
+Open the local address shown by Vite, usually `http://localhost:5173`.
 
-### Check the project
-
-Run both checks before committing or submitting changes:
+### Available commands
 
 ```bash
-# Check code quality with ESLint
-npm run lint
-
-# Type-check the project and create a production build
-npm run build
+npm run dev      # Start the development server
+npm run build    # Type-check and create a production build
+npm run lint     # Check the code with ESLint
+npm run preview  # Preview the production build
 ```
 
-To preview the production build locally:
+## Project structure
 
-```bash
-npm run preview
+```text
+dev-stack-builder/
+├── public/data/technologies.json
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── types/
+│   ├── App.tsx
+│   └── main.tsx
+└── README.md
 ```
 
-## ESLint Guide
+## Author
 
-ESLint checks the TypeScript and React source files using the rules in
-`eslint.config.js`. The generated `dist` directory is ignored.
+- [GitHub](https://github.com/sufianrubel)
+- [LinkedIn](https://www.linkedin.com/in/sufianrubel)
+- [X](https://x.com/abu_nstu27)
 
-### Check all files
+## React questions and answers
 
-```bash
-npm run lint
-```
+### 1. What is JSX, and why is it used in React?
 
-No terminal output after the script header means that no lint errors were found.
-If ESLint reports a problem, the message includes the file, line, rule name, and a
-short explanation.
+JSX is a syntax that lets us write HTML-like markup inside JavaScript or TypeScript. React uses it to make component interfaces easier to read and build.
 
-### Automatically fix supported issues
+### 2. What is the difference between props and state?
 
-```bash
-npm run lint:fix
-```
+Props are values a parent passes to a child component. State is data managed inside a component that can change and cause the interface to render again.
 
-Some problems require a manual change. After using auto-fix, run `npm run lint`
-again to confirm that the project is clean.
+### 3. What does the `useState` hook do, and where did you use it in this project?
 
-### Check one file
+`useState` stores changing data in a component. In this project, it manages the technology list, selected stack, loading and error states, modal visibility, and copy status.
 
-```bash
-npx eslint src/App.tsx
-```
+### 4. What does the `useEffect` hook do, and why did you need it to load the JSON data?
 
-### Temporarily disable a rule
+`useEffect` runs side effects after a component renders. It loads `technologies.json` when the app starts and aborts the request if the component unmounts.
 
-Prefer fixing the warning. When an exception is genuinely needed, keep the
-disable comment limited to one line and explain why:
+### 5. Why does every item in a `.map()` list need a unique `key` prop?
 
-```ts
-// eslint-disable-next-line rule-name -- reason for this exception
-```
+A unique `key` helps React identify which list item was added, removed, or updated. This makes list rendering accurate and efficient.
 
----
+### 6. What is conditional rendering? Show one place you used it.
 
-## ❓ Common FAQ
+Conditional rendering displays different UI depending on a condition. In `YourStack`, the app shows “Your stack is empty” when there are no selected technologies and shows stack items when selections exist.
 
-**1. Where can we deploy the site?**  
-Anywhere you like — Netlify, Vercel, Cloudflare Pages, or any other host. There is no fixed platform.
+### 7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
 
-**2. Do we have to use TypeScript?**  
-No. You can use TypeScript or JavaScript. If you want to build the whole project in plain JavaScript, that is completely fine.
-
-**3. Can we change the title, logo, and colors?**  
-Yes. The project title, logo, and color scheme are all yours to change — just keep them relevant to the project. Don't use random or gobindo colors and don't put an unrelated title/logo.
-
-**4. Where do we get the technology logos/icons?**  
-You can use image URLs from Google or from anywhere you like. A good source with clean, ready-to-use tech logos is <https://techicons.dev/> — copy the icon URL from there and put it in your JSON data.
-
----
-
-## 📤 What to submit:
-- GitHub Repository Link:
-- Live Site Link:
+A parent sends data to a child through props. A child communicates back by calling a callback function received through props, such as `onAdd` or `onRemove` in this project.
