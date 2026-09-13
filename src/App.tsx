@@ -27,8 +27,6 @@ export default function App() {
   const [selectedStack, setSelectedStack] = useState<Technology[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
   const [showReadmeModal, setShowReadmeModal] = useState(false);
   const [copyingConfig, setCopyingConfig] = useState(false);
 
@@ -62,22 +60,6 @@ export default function App() {
     void loadTechnologies();
     return () => controller.abort();
   }, []);
-
-  const categories = useMemo(
-    () => ['All', ...new Set(technologies.map((technology) => technology.category))],
-    [technologies],
-  );
-
-  const filteredTechnologies = useMemo(() => {
-    const normalizedQuery = searchQuery.toLowerCase();
-    return technologies.filter((technology) => {
-      const matchesSearch = technology.name.toLowerCase().includes(normalizedQuery)
-        || technology.description.toLowerCase().includes(normalizedQuery)
-        || technology.category.toLowerCase().includes(normalizedQuery);
-      const matchesCategory = activeCategory === 'All' || technology.category === activeCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [technologies, searchQuery, activeCategory]);
 
   const categoryCoverage = useMemo(() => {
     const categoriesPresent = new Set(selectedStack.map((technology) => technology.category));
@@ -127,11 +109,6 @@ export default function App() {
     }
   };
 
-  const handleResetFilters = () => {
-    setSearchQuery('');
-    setActiveCategory('All');
-  };
-
   const openDocs = () => setShowReadmeModal(true);
 
   return (
@@ -144,27 +121,18 @@ export default function App() {
       />
       <Hero onOpenDocs={openDocs} />
       <TechnologyGrid
-        technologies={filteredTechnologies}
+        technologies={technologies}
         selectedStack={selectedStack}
-        categories={categories}
-        activeCategory={activeCategory}
-        searchQuery={searchQuery}
         isLoading={isLoading}
         loadError={loadError}
         categoryCoverage={categoryCoverage}
         copyingConfig={copyingConfig}
-        onCategoryChange={setActiveCategory}
-        onSearchChange={setSearchQuery}
-        onResetFilters={handleResetFilters}
         onAdd={handleAddToStack}
         onCopy={handleCopyStackJSON}
         onRemove={handleRemoveFromStack}
         onRemoveAll={handleClearStack}
       />
-      <Footer
-        onOpenDocs={openDocs}
-        onSocialClick={(network) => toast.info(`${network} ${network === 'GitHub' ? 'repo link' : 'profile link'} clicked`)}
-      />
+      <Footer onOpenDocs={openDocs} />
       <DocsModal isOpen={showReadmeModal} onClose={() => setShowReadmeModal(false)} />
     </div>
   );

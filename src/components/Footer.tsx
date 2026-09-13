@@ -1,34 +1,37 @@
+import logoText from '../assets/logo-text.png';
+
 interface FooterProps {
   onOpenDocs: () => void;
-  onSocialClick: (network: string) => void;
 }
 
-export default function Footer({ onOpenDocs, onSocialClick }: FooterProps) {
+const socialLinks = [
+  { name: 'GitHub', href: 'https://github.com/sufianrubel' },
+  { name: 'Twitter', href: 'https://x.com/abu_nstu27' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sufianrubel' },
+];
+
+export default function Footer({ onOpenDocs }: FooterProps) {
   return (
     <footer className="bg-white border-t border-slate-100 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-slate-100">
           <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center space-x-2.5">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-orange-500 via-pink-500 to-violet-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xs">DS</span>
-              </div>
-              <span className="text-lg font-black tracking-tight text-slate-900">
-                Dev <span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">Stack</span>
-              </span>
-            </div>
+            <a href="#home" className="inline-block" aria-label="Dev Stack home">
+              <img src={logoText} alt="Dev Stack" className="h-7 w-auto" />
+            </a>
             <p className="text-slate-500 text-xs leading-relaxed max-w-sm">
               Curated tools, technologies, and resources for developers building modern software.
             </p>
             <div className="flex items-center space-x-4 text-xs font-medium text-slate-400 pt-1">
-              {['GitHub', 'Twitter', 'LinkedIn'].map((network) => (
+              {socialLinks.map(({ name, href }) => (
                 <a
-                  key={network}
-                  href={`#${network.toLowerCase()}`}
-                  onClick={(event) => { event.preventDefault(); onSocialClick(network); }}
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-pink-600 transition-colors"
                 >
-                  {network}
+                  {name}
                 </a>
               ))}
             </div>

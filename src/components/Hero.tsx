@@ -29,7 +29,7 @@ export default function Hero({ onOpenDocs }: HeroProps) {
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
+          <div className="lg:col-span-5 flex justify-center relative">
             <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
               <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
                 <img
